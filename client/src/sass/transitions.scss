@@ -1,0 +1,37 @@
+//react-transition-group transitions
+
+//scale
+.scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &-container {
+    position: relative;
+  }
+
+  /*transition states */
+
+  &-enter {
+    opacity: 0;
+    transform: scale(1.1);
+
+    &-active {
+      opacity: 1;
+      transform: scale(1);
+      transition: 250ms ease-out;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: scale(1);
+
+    &-active {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: 250ms ease-out;
+    }
+  }
+}
