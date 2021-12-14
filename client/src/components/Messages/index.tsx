@@ -34,8 +34,8 @@ const Messages: React.FC<MessagesProps> = ({ messages = [] }) => {
       gap={3}
       ref={messagesContainerRef}
     >
-      {messages.map((message) => (
-        <Message key={message.senderId} {...message} />
+      {messages.map((message, index) => (
+        <Message key={index} {...message} />
       ))}
     </Box>
   );

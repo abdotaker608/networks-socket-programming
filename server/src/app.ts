@@ -1,6 +1,6 @@
 import express from "express";
 import { createServer } from "http";
-import { PORT } from "./constants";
+import { PORT as DEFAULT_PORT } from "./constants";
 import { loadApp, loadSocketIO } from "./loaders";
 
 //Express app
@@ -14,6 +14,9 @@ loadSocketIO(httpServer);
 
 //Setup express app
 loadApp(app);
+
+//App port
+const PORT = process.env.PORT ?? DEFAULT_PORT;
 
 //Run server
 httpServer.listen(PORT, () => {

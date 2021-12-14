@@ -20,6 +20,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSubmit }) => {
 
   //submit handler
   const handleSubmit = useCallback(() => {
+    if (!value) return; //do not send empty messages
     onSubmit?.(value); //send message
     setValue(""); //reset input value
   }, [value, onSubmit]);
