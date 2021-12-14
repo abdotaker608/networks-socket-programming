@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback} from "react";
 import { Box } from "@chakra-ui/react";
 import ChatInput from "../ChatInput";
 import Messages from "../Messages";
@@ -41,20 +41,16 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ users }) => {
     [users]
   );
 
-  //indicates that messages event listener is already setup
-  const messageEventSetup = useRef(false);
-
   //setting up message event
   const setupMessageEvent = useCallback(() => {
     if (!mainChat?.socket?.connected) return; //no socket connected
-    if (messageEventSetup.current) return; //listener already is configured
+    mainChat.socket.off(MESSAGE_EVENT); //remove old listener
     mainChat.socket.on(MESSAGE_EVENT, (message) => {
       const newMessage = constructMessage(message);
       if (!newMessage) return; //anonymus construction
       //update messages state
       setMessages((messages) => [...messages, newMessage]);
     });
-    messageEventSetup.current = true; //indicate that the listener is configured by now
   }, [mainChat?.socket, constructMessage]);
 
   //setup all listeners
