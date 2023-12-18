@@ -47,7 +47,7 @@ const Avatar: React.FC<AvatarProps> = ({
     const background = encodeURIComponent(lightgray); //encoding for URL
     const styles = "micah"; //dicebear styles
     const radius = "50"; //image border radius
-    const uniqueAvatar = `https://avatars.dicebear.com/api/${styles}/${uniqueName}.svg?background=${background}&radius=${radius}`;
+    const uniqueAvatar = `https://api.dicebear.com/7.x/${styles}/svg?seed=${uniqueName}&background=${background}&radius=${radius}`;
     //internet/network validation before upadting the state
     try {
       const response = await fetch(uniqueAvatar);
